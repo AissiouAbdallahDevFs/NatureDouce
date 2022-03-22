@@ -19,3 +19,13 @@ margin: 10px;
 .btn{
     width: 20%;
 }
+.pseudo {
+    color: black;
+    font-weight: bold;
+}
+.link-logout{
+    color: greenyellow;
+}
+.loginSingup i{
+    color: rgb(7, 68, 138);
+}
