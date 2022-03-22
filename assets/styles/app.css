@@ -1,0 +1,21 @@
+body {
+    background-color: lightgray;
+}
+.form_register input{
+text-align: center;
+border-bottom: 3px solid black;
+margin: 10px;
+}
+.container{
+    text-align: center;
+    margin: 15px;
+  
+}
+.container form + .btn{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.btn{
+    width: 20%;
+}
