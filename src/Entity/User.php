@@ -38,6 +38,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
+
+    #[ORM\ManyToOne(targetEntity: Appointment::class, inversedBy: 'users')]
+    private $Appointments;
     public function __construct()
     {
         $this->createdAt = new \DateTimeImmutable();
@@ -156,6 +159,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setIsVerified(bool $isVerified): self
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    public function getAppointments(): ?Appointment
+    {
+        return $this->Appointments;
+    }
+
+    public function setAppointments(?Appointment $Appointments): self
+    {
+        $this->Appointments = $Appointments;
 
         return $this;
     }

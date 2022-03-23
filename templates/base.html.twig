@@ -26,12 +26,12 @@
 </head>
 
 <body>
-    {% block body %}
+    {% block nav %}
 
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">NatureDouce</a>
+            <a class="navbar-brand" href="{{ path('home') }}">NatureDouce</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
                 aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -40,7 +40,7 @@
             <div class="collapse navbar-collapse" id="navbarColor01">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Home
+                        <a class="nav-link active" href="{{ path('home') }}">Home
                             <span class="visually-hidden">(current)</span>
                         </a>
                     </li>
@@ -69,6 +69,14 @@
             </div>
         </div>
     </nav>
+    {% endblock %}
+    {% block body %}
+    {% endblock %}
+    {% block footer %}
+    <footer class="container">
+        <p class="float-end"><a href="#">Back to top</a></p>
+        <p>&copy; 2017–2021 Abdallah AISSIOU, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+      </footer>
     {% endblock %}
 </body>
 
