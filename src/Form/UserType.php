@@ -19,7 +19,6 @@ class UserType extends AbstractType
             ->add('pseudo')
             ->add('createdAt')
             ->add('isVerified')
-            ->add('Appointments')
         ;
     }
 

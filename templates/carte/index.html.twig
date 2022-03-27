@@ -28,6 +28,9 @@
                     <a href="{{path('carte_delete', {id: element.produit.id})}}" class="btn btn-danger">
                         <i class="fa fa-trash"></i>
                     </a>
+                    <a href="{{path('add_basket',{id: piece.id})}}" class="btn btn-success">
+                        <i class="fa fa-trash"></i>
+                    </a>
                 </td>
             </tr>
             {% else %}
@@ -44,8 +47,6 @@
                     <a href="#" class="btn btn-success"><i class="fa fa-credit-card"></i>
                     </a>
                     <a href="{{path('carte_delete_all')}}" class="btn btn-danger">X
-                    </a>
-                    <a href="{{ path('app_appointment_delete', {'id': appointment.id}) }}" class="btn btn-danger">yes
                     </a>
                     
                 </td>

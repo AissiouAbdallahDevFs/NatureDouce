@@ -21,8 +21,8 @@ class Appointment
     #[ORM\Column(type: 'string', length: 50)]
     private $price;
 
-    #[ORM\OneToMany(mappedBy: 'Appointments', targetEntity: User::class)]
-    private $users;
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'appointments')]
+    private $User;
 
     public function __construct()
     {
@@ -84,6 +84,18 @@ class Appointment
                 $user->setAppointments(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

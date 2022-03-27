@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use DateTimeImmutable;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -39,12 +41,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
 
-    #[ORM\ManyToOne(targetEntity: Appointment::class, inversedBy: 'users')]
-    private $Appointments;
+
     public function __construct()
     {
-        $this->createdAt = new \DateTimeImmutable();
+        $this->appointments = new ArrayCollection();
     }
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -171,6 +174,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setAppointments(?Appointment $Appointments): self
     {
         $this->Appointments = $Appointments;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Appointment>
+     */
+    public function getAppointment(): Collection
+    {
+        return $this->Appointment;
+    }
+
+    public function addAppointment(Appointment $appointment): self
+    {
+        if (!$this->Appointment->contains($appointment)) {
+            $this->Appointment[] = $appointment;
+            $appointment->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAppointment(Appointment $appointment): self
+    {
+        if ($this->Appointment->removeElement($appointment)) {
+            // set the owning side to null (unless already changed)
+            if ($appointment->getUser() === $this) {
+                $appointment->setUser(null);
+            }
+        }
 
         return $this;
     }
